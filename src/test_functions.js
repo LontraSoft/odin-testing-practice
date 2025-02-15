@@ -9,3 +9,13 @@ export function capitalize(string) {
 export function reverseString(string) {
     return string.split('').reverse().join('');
 }
+
+export class Calculator {
+    add(x, y) {
+	return x + y;
+    }
+    
+    subtract(x, y) {
+	return x - y;
+    }
+}

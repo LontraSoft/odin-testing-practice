@@ -27,3 +27,34 @@ export class Calculator {
 	return x / y;
     }
 }
+
+function shiftChar(char, shift) {
+    const NUMBER_OF_LETTERS = 26;
+    const LOWERCASE_LETTERS = "abcdefghijklmnopqrstuvwxyz";
+    const UPPERCASE_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let isLowerCase = char.match(/[a-z]/);
+    let isUpperCase = char.match(/[A-Z]/);
+
+    if (!isLowerCase && !isUpperCase) {
+	return char;
+    }
+
+    let shiftString = (isLowerCase) ? LOWERCASE_LETTERS : UPPERCASE_LETTERS;
+    let index = shiftString.indexOf(char);
+    let newIndex = (index + shift) % NUMBER_OF_LETTERS;
+    return shiftString[newIndex];
+}
+
+export function caesarCipher(string, shift) {
+    if (!string) {
+	return string;
+    }
+
+    let result = '';
+
+    string.split('').forEach((char) => {
+	result += shiftChar(char, shift);
+    });
+
+    return result;
+}

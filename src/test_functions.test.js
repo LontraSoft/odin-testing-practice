@@ -1,4 +1,9 @@
-import { capitalize, reverseString, Calculator } from './test_functions';
+import {
+    capitalize,
+    reverseString,
+    Calculator,
+    caesarCipher,
+} from './test_functions';
 
 describe('Capitalize Tests', () => {
     it('Empty String', () => {
@@ -105,5 +110,51 @@ describe('Calculator Tests', () => {
 	it('Divide By 0', () => {
 	    expect(calculator.divide(2, 0)).toBe(Infinity);
 	});
+    });
+});
+
+describe('CaesarCipher Tests', () => {
+    it('Empty String', () => {
+	expect(caesarCipher('', 1)).toBe('');
+    });
+
+    it('Lowercase Letter', () => {
+	expect(caesarCipher('a', 1)).toBe('b');
+    });
+
+    it('Capital Letter', () => {
+	expect(caesarCipher('A', 1)).toBe('B');
+    });
+
+    it('Punctuation Character', () => {
+	expect(caesarCipher('!', 1)).toBe('!');
+    });
+
+    it('Hello', () => {
+	expect(caesarCipher('Hello', 1)).toBe('Ifmmp');
+    });
+
+    it('Overflow Wrap Lowercase', () => {
+	expect(caesarCipher('z', 1)).toBe('a');
+    });
+
+    it('Overflow Wrap Uppercase', () => {
+	expect(caesarCipher('Z', 1)).toBe('A');
+    });
+
+    it('Wraparound Lowercase', () => {
+	expect(caesarCipher('a', 26)).toBe('a');
+    });
+
+    it('Wraparound Uppercase', () => {
+	expect(caesarCipher('A', 26)).toBe('A');
+    });
+
+    it('Mixed Case', () => {
+	expect(caesarCipher('Hello World', 1)).toBe('Ifmmp Xpsme');
+    });
+
+    it('With Whitespace', () => {
+	expect(caesarCipher('  Hello  World   ', 1)).toBe('  Ifmmp  Xpsme   ');
     });
 });

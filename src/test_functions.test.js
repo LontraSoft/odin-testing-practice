@@ -62,4 +62,48 @@ describe('Calculator Tests', () => {
 	    expect(calculator.subtract(2, -2)).toBe(4);
 	});
     });
+
+    describe('Multiply Tests', () => {
+	it('Multiply 0', () => {
+	    expect(calculator.multiply(2, 0)).toBe(0);
+	});
+
+	it('Multiply 1', () => {
+	    expect(calculator.multiply(2, 1)).toBe(2);
+	});
+
+	it('Multiply 4 12', () => {
+	    expect(calculator.multiply(4, 12)).toBe(48);
+	});
+
+	it('Multiply Negative Number', () => {
+	    expect(calculator.multiply(2, -2)).toBe(-4);
+	});
+
+	it('Multiply 2 Negatives', () => {
+	    expect(calculator.multiply(-2, -2)).toBe(4);
+	});
+    });
+
+    describe('Divide Tests', () => {
+	it('Divide By 1', () => {
+	    expect(calculator.divide(2, 1)).toBe(2);
+	});
+
+	it('Divide 12 4', () => {
+	    expect(calculator.divide(12, 4)).toBe(3);
+	});
+
+	it('Divide By Negative Number', () => {
+	    expect(calculator.divide(2, -2)).toBe(-1);
+	});
+
+	it('Divide 2 Negatives', () => {
+	    expect(calculator.divide(-2, -2)).toBe(1);
+	});
+
+	it('Divide By 0', () => {
+	    expect(calculator.divide(2, 0)).toBe(Infinity);
+	});
+    });
 });

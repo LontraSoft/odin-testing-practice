@@ -1,9 +1,13 @@
 import { capitalize } from './test_functions';
 
-test('Empty String', () => {
-    expect(capitalize('')).toBe('');
+describe('Capitalize Tests', () => {
+    it('Empty String', () => {
+	expect(capitalize('')).toBe('');
+    });
+    
+    it('Lowercase String', () => {
+	expect(capitalize('hello')).toBe('Hello');
+    });	
 });
 
-test('Lowercase String', () => {
-    expect(capitalize('hello')).toBe('Hello');
-});
+

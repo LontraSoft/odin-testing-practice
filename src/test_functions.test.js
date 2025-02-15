@@ -3,6 +3,7 @@ import {
     reverseString,
     Calculator,
     caesarCipher,
+    analyzeArray,
 } from './test_functions';
 
 describe('Capitalize Tests', () => {
@@ -156,5 +157,51 @@ describe('CaesarCipher Tests', () => {
 
     it('With Whitespace', () => {
 	expect(caesarCipher('  Hello  World   ', 1)).toBe('  Ifmmp  Xpsme   ');
+    });
+});
+
+describe('Analyze Array Tests', () => {
+    it('Reports 0 For Empty Array', () => {
+	let result = analyzeArray([]);
+	expect(result.average).toBe(0);
+	expect(result.min).toBe(0);
+	expect(result.max).toBe(0);
+	expect(result.length).toBe(0);
+    });
+
+    it('Reports x For Array Of [x]', () => {
+	let result = analyzeArray([1]);
+	expect(result.average).toBe(1);
+	expect(result.min).toBe(1);
+	expect(result.max).toBe(1);
+	expect(result.length).toBe(1);
+    });
+
+    it('Length Test', () => {
+	let result = analyzeArray([1, 2, 3, 4, 5, 6]);
+	expect(result.length).toBe(6);
+    });
+
+    it('Min Test', () => {
+	let result = analyzeArray([1, -2, 3, 24]);
+	expect(result.min).toBe(-2);
+    });
+
+    it('Max Test', () => {
+	let result = analyzeArray([1, -2, 24, 3]);
+	expect(result.max).toBe(24);
+    });
+
+    it('Average Test', () => {
+	let result = analyzeArray([1, 2, 3, 4, 5]);
+	expect(result.average).toBe(3);
+    });
+
+    it('[1, 8, 3, 4, 2, 6]', () => {
+	let result = analyzeArray([1, 8, 3, 4, 2, 6]);
+	expect(result.average).toBe(4);
+	expect(result.min).toBe(1);
+	expect(result.max).toBe(8);
+	expect(result.length).toBe(6);
     });
 });
